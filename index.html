@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7f2">
+  <meta name="description" content="Find nearby bottle return locations and check what their deposit machines accept before you go.">
+  <title>Loopback — Bottle returns, made easy</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Loopback home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none"><path d="M24.7 10.7A10 10 0 0 0 7 9.2L5 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 6v6h6M7.3 21.3A10 10 0 0 0 25 22.8L27 20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 26v-6h-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>loopback<span class="brand-period">.</span></span>
+    </a>
+    <div class="topbar-note"><span class="live-dot"></span> Community-powered, always improving</div>
+    <a class="topbar-link" href="#locations">Find a return spot <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="home">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> A better way to return</div>
+        <h1 id="hero-title">Good things<br>come <span>full circle.</span></h1>
+        <p class="hero-description">Find a bottle return nearby that takes your containers—and check the machine before you make the trip.</p>
+        <a class="hero-cta" href="#locations">Explore return spots <span aria-hidden="true">↓</span></a>
+        <div class="hero-footnote"><span class="sparkle" aria-hidden="true">✳</span> Small effort. Big impact.</div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-sun"></div>
+        <div class="art-loop art-loop-one"></div>
+        <div class="art-loop art-loop-two"></div>
+        <div class="bottle bottle-glass"><div class="bottle-neck"></div><div class="bottle-shine"></div></div>
+        <div class="bottle bottle-can"><div class="can-top"></div><div class="can-tab"></div><div class="can-stripe"></div></div>
+        <div class="bottle bottle-plastic"><div class="plastic-cap"></div><div class="plastic-neck"></div><div class="plastic-label"></div><div class="bottle-shine"></div></div>
+        <div class="art-note"><span class="note-check">✓</span><span><strong>Ready to return?</strong><small>We’ve got you.</small></span></div>
+        <span class="art-star star-one">✳</span><span class="art-star star-two">✦</span>
+      </div>
+    </section>
+
+    <section class="finder-section" id="locations" aria-labelledby="finder-title">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-line"></span> Find your nearest</div>
+          <h2 id="finder-title">Return spots</h2>
+        </div>
+        <p class="section-aside">Know before you go. <span>Choose what you’re bringing.</span></p>
+      </div>
+
+      <div class="filter-panel">
+        <div class="filter-label"><span class="filter-icon" aria-hidden="true">⌕</span><div><strong>What are you returning?</strong><small>We’ll show places that accept it</small></div></div>
+        <div class="filter-options" role="group" aria-label="Filter stores by container type">
+          <button class="filter-chip active" type="button" data-filter="all" aria-pressed="true"><span class="chip-icon">✳</span> All types</button>
+          <button class="filter-chip" type="button" data-filter="plastic" aria-pressed="false"><span class="chip-icon plastic-icon">◌</span> Plastic</button>
+          <button class="filter-chip" type="button" data-filter="glass" aria-pressed="false"><span class="chip-icon glass-icon">◒</span> Glass</button>
+          <button class="filter-chip" type="button" data-filter="cans" aria-pressed="false"><span class="chip-icon cans-icon">▤</span> Cans</button>
+        </div>
+      </div>
+
+      <div class="results-bar">
+        <p id="result-count" aria-live="polite">Showing <strong>6 return spots</strong></p>
+        <div class="results-key"><span class="live-dot"></span> Machine status updated by locals</div>
+      </div>
+      <div class="store-grid" id="store-grid" aria-live="polite"></div>
+      <div class="empty-state" id="empty-state" hidden>
+        <div class="empty-icon">↗</div><h3>No spots found</h3><p>Try another container type to find a return location.</p>
+        <button type="button" class="text-button" id="reset-filter">Show all locations <span>→</span></button>
+      </div>
+      <p class="community-note"><span aria-hidden="true">♡</span> Machine status is shared by the community. See something different? Let others know.</p>
+    </section>
+
+    <section class="impact-banner" aria-label="Community impact">
+      <div class="impact-mark">↻</div><p>Every bottle returned is one less in the wrong place.<br><strong>Thanks for closing the loop.</strong></p><span class="impact-decoration" aria-hidden="true">✳</span>
+    </section>
+  </main>
+
+  <footer class="footer"><a class="brand footer-brand" href="#home"><span class="brand-mark" aria-hidden="true">↻</span><span>loopback<span class="brand-period">.</span></span></a><span>Better returns, together.</span><span class="demo-label">Sample locations · Community demo</span></footer>
+  <dialog class="report-dialog" id="report-dialog" aria-labelledby="report-title">
+    <form method="dialog" class="dialog-content">
+      <span class="dialog-mark" aria-hidden="true">↗</span>
+      <p class="dialog-eyebrow">COMMUNITY STATUS</p>
+      <h2 id="report-title">What’s the machine status?</h2>
+      <p class="dialog-description" id="report-store-name">Help the next person know before they go.</p>
+      <div class="dialog-actions">
+        <button class="dialog-choice" type="button" data-report-status="Full"><span class="choice-dot full-dot"></span><span><strong>It’s full</strong><small>Machine is full and not accepting returns</small></span><span class="choice-arrow">→</span></button>
+        <button class="dialog-choice" type="button" data-report-status="Out of Order"><span class="choice-dot broken-dot"></span><span><strong>Out of order</strong><small>Machine is broken or unavailable</small></span><span class="choice-arrow">→</span></button>
+      </div>
+      <button class="dialog-cancel" type="submit">Never mind</button>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
